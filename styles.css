@@ -228,3 +228,98 @@ footer {
   border-left: 4px solid var(--urbane-bronze);
   background: linear-gradient(180deg, rgba(255,253,248,0.96), rgba(246,241,232,0.92));
 }
+
+/* ── Section labels ─────────────────────────────── */
+.section-label {
+  margin: 0 0 14px;
+  font-size: 1.58rem;
+  color: var(--urbane-bronze);
+}
+
+/* ── What I'm Building ──────────────────────────── */
+.building-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Early Feedback / Testimonials ─────────────── */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  color: var(--cast-iron);
+  margin: 0 0 12px;
+  line-height: 1.65;
+}
+
+.testimonial-card .attribution {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--urbane-bronze);
+  margin: 0;
+}
+
+/* ── Recent Thinking / LinkedIn posts ───────────── */
+.thinking-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-label {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .74rem;
+  font-weight: 800;
+  color: var(--peat);
+  margin: 0 0 8px;
+}
+
+.post-card h3 {
+  flex: 1;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.post-link {
+  color: var(--canyon-clay);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .88rem;
+}
+
+.post-link:hover { text-decoration: underline; }
+
+/* ── Coming soon badge ──────────────────────────── */
+.coming-soon {
+  display: inline-block;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  background: var(--canyon-clay);
+  color: #fff;
+  border-radius: 6px;
+  padding: 2px 7px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* ── Responsive additions ───────────────────────── */
+@media (max-width: 860px) {
+  .building-grid,
+  .testimonial-grid,
+  .thinking-grid { grid-template-columns: 1fr; }
+}
