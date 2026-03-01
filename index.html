@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,7 @@
 </head>
 <body>
   <header class="hero">
-    <nav class="top-nav">
+    <nav class="top-nav" id="top-nav">
       <a href="#building">Building</a>
       <a href="#proof">Proof</a>
       <a href="#offer">Work With Me</a>
@@ -21,7 +21,7 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <div class="hero-wrap card">
+    <div class="hero-wrap">
       <p class="eyebrow">Operator • Advisor • AI Product + GTM</p>
       <h1>Building AI agent systems at Demandbase. Advising B2B leadership teams on how to do the same.</h1>
       <p class="lead">
@@ -56,6 +56,7 @@
 
     <!-- Advisory Focus -->
     <section id="offer" class="card island island-offset">
+      <p class="eyebrow">How I Help</p>
       <h2>Advisory Focus</h2>
       <ul>
         <li><strong>AI Execution Sprints:</strong> define priorities, owners, and acceptance criteria so teams ship in weeks, not quarters.</li>
@@ -158,7 +159,7 @@
     </section>
 
     <!-- Analog Space -->
-    <section class="analog card">
+    <section class="analog">
       <h2>Analog Space</h2>
       <p>
         Every week I block quiet time with no tabs, no pings, no tools. Just a notebook, one question, and the hard trade-off in front of me.
@@ -186,8 +187,18 @@
 
   </main>
 
-  <footer>
-    <p>© 2026 Chad Holdorf • Built in Marin</p>
+  <footer class="footer-dark">
+    <div class="footer-inner">
+      <p>© 2026 Chad Holdorf • Built in Marin</p>
+    </div>
   </footer>
+  <script>
+    (function() {
+      var nav = document.getElementById('top-nav');
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>

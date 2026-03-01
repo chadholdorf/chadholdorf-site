@@ -1,5 +1,5 @@
 :root {
-  /* Earthy + moody palette */
+  /* Earthy + moody palette — untouched */
   --shoji: #f4efe6;
   --pure: #faf9f6;
   --peat: #2f4b43;
@@ -12,6 +12,8 @@
   --ink: #242a2f;
 }
 
+html { scroll-behavior: smooth; }
+
 * { box-sizing: border-box; }
 
 body {
@@ -23,54 +25,110 @@ body {
     linear-gradient(135deg, rgba(201,192,178,0.08) 25%, transparent 25%) 0 0/18px 18px,
     var(--shoji);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
-main, .hero, footer {
+/* ── Grain texture — subtle paper warmth on shoji ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+main, .hero {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 28px;
 }
 
-/* Wide digital hallways */
-.hero { padding-top: 28px; padding-bottom: 10px; }
-main { padding-top: 12px; padding-bottom: 30px; }
+/* ── Hallways — generous vertical breathing room ── */
+.hero { padding-top: 56px; padding-bottom: 24px; }
+main { padding-top: 24px; padding-bottom: 100px; }
 
+/* ── Navigation — sticky + frosted glass on scroll ── */
 .top-nav {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 0 6px;
+  transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease;
+}
+
+.top-nav.scrolled {
+  background: rgba(244, 239, 230, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201, 192, 178, 0.45);
 }
 
 .top-nav a {
   color: var(--cast-iron);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: .01em;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color .2s ease;
 }
 
+.top-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--canyon-clay);
+  transition: width .22s ease;
+}
+
+.top-nav a:hover { color: var(--ink); }
+.top-nav a:hover::after { width: 100%; }
+
+/* ── Cards ── */
 .card {
   background: rgba(250, 249, 246, 0.92);
   border: 1px solid var(--pebble);
   border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 8px 24px rgba(37, 42, 47, 0.06);
+  padding: 26px 28px;
+  box-shadow:
+    0 1px 3px rgba(36, 42, 47, 0.04),
+    0 8px 20px rgba(47, 75, 67, 0.07);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-.island { margin-top: 22px; }
+.island { margin-top: 64px; }
 .island-offset { transform: translateX(14px); }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(37, 42, 47, 0.09);
+  transform: translateY(-3px);
+  box-shadow:
+    0 2px 6px rgba(36, 42, 47, 0.05),
+    0 14px 32px rgba(47, 75, 67, 0.11);
 }
 
+/* ── Hero-wrap — architectural, standalone (no .card class) ── */
 .hero-wrap {
   position: relative;
   overflow: hidden;
+  background: rgba(250, 249, 246, 0.88);
+  border: 1px solid var(--pebble);
   border-left: 5px solid var(--peat);
+  border-radius: 18px;
+  padding: 40px 48px 40px 36px;
+  box-shadow:
+    0 1px 3px rgba(36, 42, 47, 0.04),
+    0 12px 32px rgba(47, 75, 67, 0.08);
   transform: translateX(6px);
 }
 
@@ -86,6 +144,7 @@ main { padding-top: 12px; padding-bottom: 30px; }
   opacity: .55;
 }
 
+/* ── Eyebrow labels ── */
 .eyebrow {
   margin: 0 0 10px;
   text-transform: uppercase;
@@ -95,16 +154,17 @@ main { padding-top: 12px; padding-bottom: 30px; }
   color: var(--oxblood);
 }
 
+/* ── Typography ── */
 h1, h2, h3 {
   font-family: "Fraunces", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   letter-spacing: -0.015em;
 }
 
 h1 {
-  margin: 0 0 12px;
-  line-height: 1.1;
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  max-width: 18ch;
+  margin: 0 0 16px;
+  line-height: 1.08;
+  font-size: clamp(2.8rem, 5.5vw, 3.8rem);
+  max-width: 16ch;
 }
 
 h2 { margin: 0 0 10px; font-size: 1.58rem; color: var(--urbane-bronze); }
@@ -112,9 +172,12 @@ h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--cast-iron); }
 
 .lead {
   color: #3f4a51;
-  max-width: 70ch;
+  max-width: 68ch;
+  font-size: 1.04rem;
+  line-height: 1.8;
 }
 
+/* ── CTA row + buttons ── */
 .cta-row {
   margin-top: 16px;
   display: flex;
@@ -125,44 +188,51 @@ h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--cast-iron); }
 .btn {
   display: inline-block;
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 10px 18px;
   text-decoration: none;
   font-weight: 700;
-  transition: transform .15s ease, opacity .15s ease;
+  font-size: .95rem;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
 }
-.btn:hover { transform: translateY(-1px); opacity: .95; }
 
+.btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--peat); color: #fff; }
+.btn-primary:hover {
+  filter: brightness(0.88);
+  box-shadow: 0 4px 14px rgba(47, 75, 67, 0.40);
+}
 .btn-ghost { color: var(--ink); border: 1px solid var(--pebble); background: rgba(255,255,255,.7); }
+.btn-ghost:hover { background: rgba(255,255,255,.95); border-color: var(--cast-iron); }
 
-/* Purposeful asymmetry */
+/* ── Proof grid — purposeful asymmetry, dominant first card ── */
 .proof-grid {
   display: grid;
-  grid-template-columns: 1.1fr .9fr 1fr;
+  grid-template-columns: 1.3fr .85fr .85fr;
   gap: 12px;
-  margin: 16px 0;
+  margin: 0;
 }
-.proof-grid .proof:nth-child(2) { transform: translateY(14px); }
-.proof-grid .proof:nth-child(3) { transform: translateY(-6px); }
+.proof-grid .proof:nth-child(2) { transform: translateY(18px); }
+.proof-grid .proof:nth-child(3) { transform: translateY(-10px); }
 
 .metric {
-  font-size: 1.95rem;
+  font-size: 2.5rem;
   line-height: 1;
   margin-bottom: 8px;
   font-weight: 800;
   color: var(--peat);
 }
 
+/* ── Fit grid ── */
 .fit-grid {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
   gap: 12px;
-  margin: 14px 0;
 }
 
 ul { margin: 0; padding-left: 20px; }
 .small { color: var(--cast-iron); margin-top: 10px; }
 
+/* ── Newsletter signup form ── */
 .signup {
   display: flex;
   gap: 10px;
@@ -186,8 +256,12 @@ ul { margin: 0; padding-left: 20px; }
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  transition: filter .2s ease;
 }
 
+.signup button:hover { filter: brightness(0.9); }
+
+/* ── Social links ── */
 .social {
   list-style: none;
   margin: 0;
@@ -203,12 +277,21 @@ ul { margin: 0; padding-left: 20px; }
   font-weight: 700;
 }
 
-footer {
-  color: var(--cast-iron);
-  padding: 20px 22px 32px;
+/* ── Footer — dark architectural anchor ── */
+.footer-dark {
+  background: var(--ink);
+  color: rgba(244, 239, 230, 0.75);
   font-size: .92rem;
+  margin-top: 80px;
 }
 
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 36px 28px 48px;
+}
+
+/* ── Responsive — mobile first, everything stacks ── */
 @media (max-width: 860px) {
   .proof-grid,
   .fit-grid { grid-template-columns: 1fr; }
@@ -218,35 +301,67 @@ footer {
 
   .hero-wrap::after { display: none; }
   .hero-wrap, .island-offset { transform: none; }
+
+  .building-grid,
+  .testimonial-grid,
+  .thinking-grid { grid-template-columns: 1fr; }
+
+  .analog { text-align: left; margin: 60px auto 0; }
+  .analog::before { margin: 0 0 32px; }
+  .hero { padding-top: 36px; }
 }
 
+/* ── Contact / CTA panel ── */
 .cta-panel {
   border-left: 4px solid var(--canyon-clay);
 }
 
+/* ── Analog Space — pure typography, no card ── */
 .analog {
-  border-left: 4px solid var(--urbane-bronze);
-  background: linear-gradient(180deg, rgba(255,253,248,0.96), rgba(246,241,232,0.92));
+  max-width: 62ch;
+  margin: 80px auto 0;
+  padding: 0 28px;
+  text-align: center;
+  font-size: 1.06rem;
+  line-height: 1.85;
+  color: var(--cast-iron);
 }
 
-/* ── Section labels ─────────────────────────────── */
+.analog::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--pebble);
+  margin: 0 auto 40px;
+}
+
+.analog h2 {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--urbane-bronze);
+  margin-bottom: 24px;
+  font-size: 1.72rem;
+}
+
+/* ── Section labels ── */
 .section-label {
-  margin: 0 0 14px;
+  margin: 0 0 20px;
   font-size: 1.58rem;
   color: var(--urbane-bronze);
 }
 
-/* ── What I'm Building ──────────────────────────── */
+/* ── What I'm Building — asymmetric tension ── */
 .building-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.25fr .75fr;
   gap: 12px;
 }
 
-/* ── Early Feedback / Testimonials ─────────────── */
+/* ── Early Feedback / Testimonials — variable rhythm ── */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: .85fr 1.15fr 1fr;
   gap: 12px;
 }
 
@@ -264,11 +379,12 @@ footer {
   margin: 0;
 }
 
-/* ── Recent Thinking / LinkedIn posts ───────────── */
+/* ── Recent Thinking — descending scale ── */
 .thinking-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.15fr 1fr .85fr;
   gap: 12px;
+  align-items: start;
   margin-bottom: 16px;
 }
 
@@ -301,7 +417,7 @@ footer {
 
 .post-link:hover { text-decoration: underline; }
 
-/* ── Coming soon badge ──────────────────────────── */
+/* ── Coming soon badge ── */
 .coming-soon {
   display: inline-block;
   font-family: "Inter", -apple-system, sans-serif;
@@ -315,11 +431,4 @@ footer {
   padding: 2px 7px;
   vertical-align: middle;
   margin-left: 8px;
-}
-
-/* ── Responsive additions ───────────────────────── */
-@media (max-width: 860px) {
-  .building-grid,
-  .testimonial-grid,
-  .thinking-grid { grid-template-columns: 1fr; }
 }
