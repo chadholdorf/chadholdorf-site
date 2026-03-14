@@ -417,6 +417,13 @@ ul { margin: 0; padding-left: 20px; }
 
 .post-link:hover { text-decoration: underline; }
 
+.post-summary {
+  font-size: .9rem;
+  color: var(--cast-iron);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
 /* ── Coming soon badge ── */
 .coming-soon {
   display: inline-block;
