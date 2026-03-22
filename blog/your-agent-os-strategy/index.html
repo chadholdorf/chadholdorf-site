@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Every Company Needs an Agent OS Strategy — Chad Holdorf</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafafa;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    nav { margin-bottom: 2rem; font-size: 0.9rem; }
+    nav a { color: #666; text-decoration: none; }
+    nav a:hover { color: #1a1a1a; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.2; }
+    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    .meta a { color: #666; }
+    .content p { margin-bottom: 1.2rem; }
+    .content h2 { margin: 2rem 0 1rem; font-size: 1.4rem; }
+    .content h3 { margin: 1.5rem 0 0.75rem; font-size: 1.2rem; }
+    .content blockquote {
+      border-left: 3px solid #ddd;
+      padding-left: 1rem;
+      color: #555;
+      margin: 1.5rem 0;
+    }
+    .content a { color: #0066cc; }
+    .content ul, .content ol { margin: 1rem 0 1rem 1.5rem; }
+    .content li { margin-bottom: 0.4rem; }
+    .content code {
+      background: #f0f0f0;
+      padding: 0.15em 0.4em;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .source-link {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .source-link a { color: #888; }
+    footer {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <nav><a href="/">&larr; chadholdorf.com</a> &middot; <a href="/blog">Blog</a></nav>
+  <article>
+    <h1>Every Company Needs an Agent OS Strategy</h1>
+    <div class="meta">
+      2026-03-22 &middot; support
+    </div>
+    <div class="content">
+      
+<p>The framing that clicked for me recently: an agent runtime isn't a tool. It's an operating system.</p>
+
+<p>Think about what an OS actually does. It manages resources. It handles I/O. It schedules work. It lets programs call each other. It sits between the hardware and everything you actually care about.</p>
+
+<p>An agent runtime does exactly the same thing — except the "hardware" is a set of large language models, and the "programs" are tasks you used to hire people to do.</p>
+
+<p>Once you see it that way, the stakes change.</p>
+
+<p>When Linux emerged, most enterprise IT departments didn't have a Linux strategy. Then suddenly they did, because the alternative was falling behind every competitor who figured out how to run servers for a fraction of the cost. Kubernetes felt like plumbing until it wasn't — then it was the thing that made cloud-native possible at scale.</p>
+
+<p>We're at that inflection point again, and most companies are still in the "we're evaluating AI tooling" phase.</p>
+
+<p>I've spent the past year building agent workflows into real product and engineering work. Not demos — actual pipelines running in production, doing things like generating tickets from trace logs, routing pipeline decisions, and running evals overnight while no one's watching. The productivity delta is real. But the bigger realization is structural: once you have a reliable agent runtime underneath all of it, the cost of adding the next workflow drops dramatically. The first one is hard. The tenth one is fast.</p>
+
+<p>That's the compounding effect nobody talks about when they pitch "AI productivity." It's not about any single task. It's about what happens when every workflow in your org can call into the same substrate — scheduling, memory, tool access, sub-agent spawning, multi-modal I/O.</p>
+
+<p>That substrate is the agent OS.</p>
+
+<p>The companies building on top of it now are accruing something that can't be bought later: institutional fluency. Their teams know how to break a problem into agent-executable steps. They know where the models fail. They know how to instrument for it. That knowledge compounds too.</p>
+
+<p>The CEOs asking "what's our agent strategy?" are asking the right question. But I'd push it one level deeper: what's your agent <em>runtime</em> strategy? Which substrate are you building on? Who owns it? What does your stack look like when 40% of knowledge work is being routed through it?</p>
+
+<p>Those aren't hypothetical questions anymore. They're engineering decisions happening right now, at companies that will look very different from their competitors in 24 months.</p>
+
+<p>Pick your OS. Build on it deliberately. The window to do this thoughtfully — rather than reactively — is closing faster than most people think.</p>
+
+    </div>
+    <div class="source-link">
+      Re: <a href="""" target="_blank" rel="noopener">Transcript</a>
+    </div>
+  </article>
+  <footer>&copy; Chad Holdorf</footer>
+</body>
+</html>
